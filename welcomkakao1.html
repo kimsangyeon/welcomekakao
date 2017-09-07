@@ -3,10 +3,32 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title></title>
-		<script></script>
 	</head>
 	<body>
 		<div>input number:</div>
-		<input type="text" name="input Num" value=""/>
+		<input id="inputNum" type="text" name="input Num" value=""/>
+		<input id="okBtn" type="button" value="ok">
+		<script>
+			var elBtn = document.getElementById("okBtn");
+			var elInputText = document.getElementById("inputNum");
+
+			elBtn.onclick = function() {
+				n = parseInt(elInputText.value);
+
+				var answer = 0;
+				var tmpNum = n;
+
+				if(!Number.isInteger(n) || n > 1000000000) {
+					return;
+				}
+
+				while(tmpNum > 0) {
+					answer += tmpNum % 10;
+					tmpNum = parseInt(tmpNum/10);
+				}
+
+				alert(answer);
+			}
+		</script>
 	</body>
 </html>
