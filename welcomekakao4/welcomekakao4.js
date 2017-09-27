@@ -5,7 +5,7 @@ function solution(board){
     for(var i = 0; i < tmpBoard.length; i++) {
         for(var j = 0; j < tmpBoard[i].length; j++) {
             if(tmpBoard[i][j] === 1) {
-                searchRow(tmpBoard, j)
+                searchRow(tmpBoard, i, j)
             }
         }
     }
@@ -13,18 +13,22 @@ function solution(board){
     return answer;
 }
 
-function searchRow(board, startIndex) {
+function searchRow(board, rowIndex, colIndex) {
+    for(var i = colIndex; i < board[rowIndex].length; i++) {
+        if(board[rowIndex][i] === 1) {
+            
+        }
+    }
+}
+
+function searchCol(board, rowIndex, colIndex) {
 
 }
 
-function searchCol(board, startIndex) {
+function searchReverseRow(board, rowIndex, colIndex) {
 
 }
 
-function searchReverseRow(board, startIndex) {
-
-}
-
-function searchReverseCol(board, startIndex) {
+function searchReverseCol(board, rowIndex, colIndex) {
     
 }
