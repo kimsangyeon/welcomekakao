@@ -43,7 +43,7 @@ function searchCol(board, rowIndex, colIndex, count) {
 }
 
 function searchReverseRow(board, rowIndex, colIndex, count) {
-    for(var )
+
 }
 
 function searchReverseCol(board, rowIndex, colIndex, count) {
