@@ -22,30 +22,28 @@ function countOne(board, rowIndex, colIndex) {
             count++;
         }
     }
-
-    if(searchCol(board, rowIndex + 1, colIndex, count)) {
-        return count * count;
-    } else {
+    
+    if(board.length - rowIndex < count) {
         return 0;
     }
+
+    for(var i = 0; i < count; i++) {
+        if(!searchCol(board, rowIndex + 1, colIndex, count)) {
+            return 0;
+        }
+    }
+    
+    return count * count;
 }
 
 function searchCol(board, rowIndex, colIndex, count) {
     var flag = true;
-    for(var i = colIndex; i <= count; i++) {
+
+    for(var i = colIndex; count == 0; count--) {
         if(board[rowIndex][i] !== 1) {
-            flag = false;
-            break;
+            return false;
         }
     }
-
-    if(flag) {
-        if(rowIndex + 1 == board.length) {
-            return true;
-        }
-        searchCol(board, rowIndex + 1, colIndex, count);
-    } else {
-        return false;
-    }
+    
+    return true;
 }
-
