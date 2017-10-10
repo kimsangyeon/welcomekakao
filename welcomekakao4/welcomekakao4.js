@@ -5,7 +5,9 @@ function solution(board){
     for(var i = 0; i < tmpBoard.length; i++) {
         for(var j = 0; j < tmpBoard[i].length; j++) {
             if(tmpBoard[i][j] === 1) {
-                countOne(tmpBoard, i, j)
+                if(answer < countOne(tmpBoard, i, j)) {
+                    answer = countOne(tmpBoard, i, j);
+                }
             }
         }
     }
@@ -21,36 +23,29 @@ function countOne(board, rowIndex, colIndex) {
         }
     }
 
-    if(searchCol(board, rowIndex, i, count)) {
+    if(searchCol(board, rowIndex + 1, colIndex, count)) {
         return count * count;
     } else {
-        return false;
+        return 0;
     }
 }
 
 function searchCol(board, rowIndex, colIndex, count) {
-    for(var i = rowIndex; i < count; i++) {
-        if(board[i][colIndex] !== 1) {
-            return false;
+    var flag = true;
+    for(var i = colIndex; i <= count; i++) {
+        if(board[rowIndex][i] !== 1) {
+            flag = false;
+            break;
         }
     }
 
-    if(searchReverseRow(board, i, colIndex, count)) {
-        return true;
+    if(flag) {
+        if(rowIndex + 1 == board.length) {
+            return true;
+        }
+        searchCol(board, rowIndex + 1, colIndex, count);
     } else {
         return false;
     }
-}
-
-function searchReverseRow(board, rowIndex, colIndex, count) {
-
-}
-
-function searchReverseCol(board, rowIndex, colIndex, count) {
-    
-}
-
-function searchRow(board, rowIndex, colIndex, count) {
-    
 }
 
