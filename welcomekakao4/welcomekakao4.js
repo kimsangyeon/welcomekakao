@@ -17,6 +17,7 @@ function solution(board){
 
 function countOne(board, rowIndex, colIndex) {
     var count = 0;
+    var maxRect = 0;
     for(var i = colIndex; i < board[rowIndex].length; i++) {
         if(board[rowIndex][i] === 1) {
             count++;
@@ -27,10 +28,15 @@ function countOne(board, rowIndex, colIndex) {
         return 0;
     }
 
+    var rowCnt = 1;
     for(var i = 0; i < count; i++) {
         if(!searchCol(board, rowIndex + 1, colIndex, count)) {
-            return 0;
+            if(maxRect < rowCnt * rowCnt) {
+                maxRect = rowCnt * rowCnt;
+            }
+            return maxRect;
         }
+        rowCnt++;
     }
     
     return count * count;
